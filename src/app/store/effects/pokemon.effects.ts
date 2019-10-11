@@ -4,21 +4,26 @@ import { map, mergeMap, catchError } from 'rxjs/operators';
 import { PokemonService } from '../../services/pokemon.service';
 import { PokemonActionTypes } from '../actions/pokemon.actions';
 import { EMPTY } from 'rxjs';
+import { capitalize } from '../../utils/index';
 
 @Injectable()
 export class PokemonEffects {
   getPokemon$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PokemonActionTypes.GET_POKEMON),
-      mergeMap(() =>
-        this.pokemonService.getPokemon(1).pipe(
-          map(pokemon => ({
+      mergeMap(({ payload: pokemonId }: any) => {
+        return this.pokemonService.getPokemon(pokemonId).pipe(
+          map((pokemon: any) => ({
             type: PokemonActionTypes.LOAD_POKEMON,
-            payload: pokemon
+            payload: {
+              name: capitalize(pokemon.name),
+              id: pokemon.id,
+              sprites: pokemon.sprites
+            }
           })),
           catchError(() => EMPTY)
-        )
-      )
+        );
+      })
     )
   );
 

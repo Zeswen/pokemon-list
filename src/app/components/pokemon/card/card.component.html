@@ -1,12 +1,11 @@
-<mat-card class="card">
+<mat-card class="card blurred-box">
   <mat-card-header>
-    <mat-card-title>Bulbasur</mat-card-title>
-    <mat-card-subtitle>1</mat-card-subtitle>
+    <mat-card-title>{{pokemon.name}}</mat-card-title>
+    <mat-card-subtitle>{{pokemon.id}}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image class="card-image" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
-    alt="Photo of a Bulbasur">
+  <img mat-card-image class="card-image" [src]="pokemon.sprites[this.sprite]" alt="Photo of a {{ pokemon.name }}">
   <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
+    <button mat-button (click)="toggleShiny()">SHINY</button>
+    <button mat-button (click)="toggleFace()">FACE</button>
   </mat-card-actions>
 </mat-card>

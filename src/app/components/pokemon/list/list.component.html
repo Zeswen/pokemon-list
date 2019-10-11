@@ -1,1 +1,5 @@
-<p>list works!</p>
+<mat-grid-list cols="4">
+  <mat-grid-tile *ngFor="let pokemon of pokemon">
+    <app-card [pokemon]="pokemon"></app-card>
+  </mat-grid-tile>
+</mat-grid-list>

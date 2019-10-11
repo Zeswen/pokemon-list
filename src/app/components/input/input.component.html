@@ -1,6 +1,8 @@
-<form class="form">
+<form class="form" ngSubmit="onSubmit()">
   <mat-form-field class="full-width">
-    <input matInput placeholder="Add a pokemon...">
-    <mat-icon matSuffix>send</mat-icon>
+    <input matInput placeholder="Add a pokemon..." [(ngModel)]="pokemonId" name="pokemonId">
+    <button mat-icon-button matSuffix (click)="onSubmit()">
+      <mat-icon matSuffix>send</mat-icon>
+    </button>
   </mat-form-field>
 </form>

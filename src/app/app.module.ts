@@ -13,6 +13,7 @@ import { InputComponent } from './components/input/input.component';
 import { EffectsModule } from '@ngrx/effects';
 import { PokemonEffects } from './store/effects/pokemon.effects';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, CardComponent, ListComponent, InputComponent],
@@ -29,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MaterialModule,
     EffectsModule.forRoot([PokemonEffects]),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { PokemonState } from '../../store/reducers/pokemon.reducer';
+import { getPokemon } from '../../store/actions/pokemon.actions';
 
 @Component({
   selector: 'app-input',
@@ -6,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./input.component.css']
 })
 export class InputComponent implements OnInit {
+  pokemonId;
 
-  constructor() { }
+  constructor(private store: Store<{ pokemon: PokemonState }>) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  onSubmit() {
+    this.store.dispatch(getPokemon({payload: this.pokemonId}));
   }
-
 }
